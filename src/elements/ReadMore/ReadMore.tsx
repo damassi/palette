@@ -1,6 +1,6 @@
 import { isString } from "lodash"
 import React, { Component } from "react"
-import { renderToStaticMarkup } from "react-dom/server"
+import ReactDOM from "react-dom/server"
 import styled from "styled-components"
 import { DisplayProps } from "styled-system"
 import truncate from "trunc-html"
@@ -33,7 +33,7 @@ export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
 
     this.html = isString(props.content)
       ? props.content
-      : renderToStaticMarkup(<>{props.content}</>)
+      : ReactDOM.renderToStaticMarkup(<>{props.content}</>)
 
     const RE = /(<([^>]+)>)/gi // Strip HTML tags to get innerText char count
     const { length } = this.html.replace(RE, "") //
